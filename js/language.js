@@ -7,10 +7,10 @@ const translations = {
         'nav.projects': 'Projeler',
         'nav.contact': 'İletişim',
 
-    // Hero
-    // include TM markup so it may render as HTML
-    'hero.brand': "ELIYTE<sup class='tm'>&trade;</sup>",
-    'hero.title': 'innovating for better',
+        // Hero
+        // include TM markup so it may render as HTML
+        'hero.brand': "ELIYTE<sup class='tm'>&trade;</sup>",
+        'hero.title': 'innovating for better',
         'hero.description': 'Yapay zeka, otomasyon ve yazılım geliştirme alanlarında kurumsal çözümler sunan teknoloji şirketiniz',
         'hero.cta': 'İletişime Geçin',
 
@@ -65,9 +65,9 @@ const translations = {
         'project.lifestyle.title': 'Yaşam & İş Platformları',
         'project.enterprise.title': 'Kurumsal Çözümler',
         'project.hardware.title': 'Donanım Projeleri',
-    // Mock hardware project descriptions (non-disclosed)
-    'project.hardware.item1': 'Prototype smart sensor (mock)',
-    'project.hardware.item2': 'Industrial controller (mock)',
+        // Mock hardware project descriptions (non-disclosed)
+        'project.hardware.item1': 'Prototype smart sensor (mock)',
+        'project.hardware.item2': 'Industrial controller (mock)',
 
         // Contact Section
         'contact.title': 'İletişim',
@@ -251,9 +251,9 @@ const translations = {
         'nav.projects': 'Projects',
         'nav.contact': 'Contact',
 
-    // Hero
-    'hero.brand': "ELIYTE<sup class='tm'>&trade;</sup>",
-    'hero.title': 'innovating for better',
+        // Hero
+        'hero.brand': "ELIYTE<sup class='tm'>&trade;</sup>",
+        'hero.title': 'innovating for better',
         'hero.description': 'Your technology company offering enterprise solutions in artificial intelligence, automation, and software development',
         'hero.cta': 'Get in Touch',
 
@@ -308,9 +308,9 @@ const translations = {
         'project.lifestyle.title': 'Lifestyle & Business Platforms',
         'project.enterprise.title': 'Enterprise Solutions',
         'project.hardware.title': 'Hardware Projects',
-    // Mock hardware project descriptions (non-disclosed examples)
-    'project.hardware.item1': 'Prototype smart sensor (mock)',
-    'project.hardware.item2': 'Industrial controller (mock)',
+        // Mock hardware project descriptions (non-disclosed examples)
+        'project.hardware.item1': 'Prototype smart sensor (mock)',
+        'project.hardware.item2': 'Industrial controller (mock)',
 
         // Contact Section
         'contact.title': 'Contact',
@@ -520,7 +520,7 @@ async function updateLanguage(lang) {
     // Try remote JSON if not already loaded
     if (!remoteTranslations[lang]) {
         try {
-            const res = await fetch(`/lang/${lang}.json`, {cache: 'no-store'});
+            const res = await fetch(`/lang/${lang}.json`, { cache: 'no-store' });
             if (res.ok) {
                 remoteTranslations[lang] = await res.json();
             }
@@ -556,13 +556,13 @@ function updateLanguageButton(lang) {
 }
 
 // Initialize language on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateLanguage(currentLang);
 
     // Add language toggle event listener
     const langToggle = document.getElementById('lang-toggle');
     if (langToggle) {
-        langToggle.addEventListener('click', function() {
+        langToggle.addEventListener('click', function () {
             const newLang = currentLang === 'tr' ? 'en' : 'tr';
             updateLanguage(newLang);
         });
