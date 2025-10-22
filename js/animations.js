@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fade in hero content
     gsap.from('.hero__content', {
         opacity: 0,
-        y: 50,
-        duration: 1,
+        y: 20,
+        duration: 0.6,
         ease: 'power3.out',
-        delay: 0.3
+        delay: 0.1
     });
 
     // Animate service cards on scroll
@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
+                start: 'top 98%',
                 end: 'top 20%',
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            y: 60,
-            rotationX: 10,
-            duration: 0.8,
-            delay: index * 0.1,
+            y: 20,
+            rotationX: 3,
+            duration: 0.3,
+            delay: index * 0.02,
             ease: 'power2.out'
         });
     });
@@ -35,44 +35,44 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
+                start: 'top 98%',
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            scale: 0.8,
-            duration: 0.6,
-            delay: index * 0.1,
+            scale: 0.95,
+            duration: 0.3,
+            delay: index * 0.02,
             ease: 'back.out(1.2)'
         });
     });
 
-    // Section headers animation
-    gsap.utils.toArray('.section__header').forEach(header => {
-        gsap.from(header, {
-            scrollTrigger: {
-                trigger: header,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: 'power2.out'
-        });
-    });
+    // Section headers animation - disabled to prevent layout shifts
+    // gsap.utils.toArray('.section__header').forEach(header => {
+    //     gsap.from(header, {
+    //         scrollTrigger: {
+    //             trigger: header,
+    //             start: 'top 98%',
+    //             toggleActions: 'play none none reverse'
+    //         },
+    //         opacity: 0,
+    //         y: 0,
+    //         duration: 0.4,
+    //         ease: 'power2.out'
+    //     });
+    // });
 
     // Service icons rotation
     gsap.utils.toArray('.service__icon').forEach(icon => {
         gsap.from(icon, {
             scrollTrigger: {
                 trigger: icon,
-                start: 'top 85%',
+                start: 'top 98%',
                 toggleActions: 'play none none reverse'
             },
-            rotation: -180,
-            scale: 0,
-            duration: 0.8,
-            ease: 'back.out(2)'
+            rotation: -45,
+            scale: 0.7,
+            duration: 0.3,
+            ease: 'back.out(1.7)'
         });
     });
 
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.from(list.children, {
             scrollTrigger: {
                 trigger: list,
-                start: 'top 80%',
+                start: 'top 95%',
                 toggleActions: 'play none none reverse'
             },
             opacity: 0,
-            x: -20,
-            duration: 0.5,
-            stagger: 0.1,
+            x: -8,
+            duration: 0.25,
+            stagger: 0.03,
             ease: 'power2.out'
         });
     });
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('mouseenter', function() {
             gsap.to(this, {
                 scale: 1.05,
-                duration: 0.3,
+                duration: 0.2,
                 ease: 'power2.out'
             });
         });
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('mouseleave', function() {
             gsap.to(this, {
                 scale: 1,
-                duration: 0.3,
+                duration: 0.2,
                 ease: 'power2.out'
             });
         });
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const target = document.querySelector(href);
                 if (target) {
                     gsap.to(window, {
-                        duration: 1,
+                        duration: 0.8,
                         scrollTo: {
                             y: target,
                             offsetY: 70
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollTopBtn.addEventListener('click', function(e) {
             e.preventDefault();
             gsap.to(window, {
-                duration: 1.5,
+                duration: 0.8,
                 scrollTo: { y: 0 },
                 ease: 'power3.inOut'
             });
@@ -173,9 +173,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const y = e.clientY - rect.top - rect.height / 2;
 
             gsap.to(icon, {
-                x: x * 0.1,
-                y: y * 0.1,
-                duration: 0.3,
+                x: x * 0.08,
+                y: y * 0.08,
+                duration: 0.2,
                 ease: 'power2.out'
             });
         });
@@ -184,45 +184,45 @@ document.addEventListener('DOMContentLoaded', function() {
             gsap.to(icon, {
                 x: 0,
                 y: 0,
-                duration: 0.5,
+                duration: 0.3,
                 ease: 'elastic.out(1, 0.3)'
             });
         });
     });
 
-    // Text reveal animation
-    gsap.utils.toArray('.section__title, .section__subtitle').forEach(element => {
-        const text = element.textContent;
-        element.innerHTML = text.split('').map(char =>
-            char === ' ' ? '<span>&nbsp;</span>' : `<span>${char}</span>`
-        ).join('');
+    // Text reveal animation - disabled to prevent layout shifts
+    // gsap.utils.toArray('.section__title, .section__subtitle').forEach(element => {
+    //     const text = element.textContent;
+    //     element.innerHTML = text.split('').map(char =>
+    //         char === ' ' ? '<span>&nbsp;</span>' : `<span>${char}</span>`
+    //     ).join('');
 
-        gsap.from(element.children, {
-            scrollTrigger: {
-                trigger: element,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 20,
-            rotationX: -90,
-            stagger: 0.02,
-            duration: 0.5,
-            ease: 'back.out(1.7)'
-        });
-    });
+    //     gsap.from(element.children, {
+    //         scrollTrigger: {
+    //             trigger: element,
+    //             start: 'top 95%',
+    //             toggleActions: 'play none none reverse'
+    //         },
+    //         opacity: 0,
+    //         y: 10,
+    //         rotationX: -45,
+    //         stagger: 0.015,
+    //         duration: 0.3,
+    //         ease: 'back.out(1.7)'
+    //     });
+    // });
 
     // Footer animation
     gsap.from('.footer__content > *', {
         scrollTrigger: {
             trigger: '.footer',
-            start: 'top 80%',
+            start: 'top 92%',
             toggleActions: 'play none none reverse'
         },
         opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
+        y: 20,
+        duration: 0.5,
+        stagger: 0.1,
         ease: 'power2.out'
     });
 
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         gsap.to('body', {
             opacity: 1,
-            duration: 0.5,
+            duration: 0.3,
             ease: 'power2.out'
         });
     });

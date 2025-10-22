@@ -1,31 +1,35 @@
-/*===== MENU SHOW/HIDE =====*/
-const navMenu = document.getElementById('nav-menu');
+/*===== MOBILE DRAWER SHOW/HIDE =====*/
 const navToggle = document.getElementById('nav-toggle');
-const navClose = document.getElementById('nav-close');
+const drawerClose = document.getElementById('drawer-close');
+const drawer = document.getElementById('mobile-drawer');
 
-// Menu show
-if (navToggle) {
+// Show mobile drawer
+if (navToggle && drawer) {
     navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu');
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
     });
 }
 
-// Menu hide
-if (navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
+// Hide mobile drawer
+if (drawerClose && drawer) {
+    drawerClose.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
     });
 }
 
-/*===== REMOVE MENU MOBILE =====*/
-const navLink = document.querySelectorAll('.nav__link');
+/*===== CLOSE DRAWER ON LINK CLICK =====*/
+const drawerLinks = document.querySelectorAll('.mobile-drawer .nav__link');
 
-function linkAction() {
-    const navMenu = document.getElementById('nav-menu');
-    // When we click on each nav__link, we remove the show-menu class
-    navMenu.classList.remove('show-menu');
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
+drawerLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (drawer) {
+            drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+        }
+    });
+});
 
 /*===== SCROLL SECTIONS ACTIVE LINK =====*/
 const sections = document.querySelectorAll('section[id]');
