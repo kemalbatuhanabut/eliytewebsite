@@ -1,0 +1,22 @@
+# robots.txt for ELIYTE - Technology Company
+# https://eliyte.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow language files
+Disallow: /lang/
+
+# Disallow any temporary or development files
+Disallow: /*.json$
+
+# Allow CSS and JS for proper crawling
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Sitemap location (create sitemap.xml later)
+Sitemap: https://eliyte.com/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

@@ -204,5 +204,9 @@
   "brand.contact.description": "Special permission is required to use the ELIYTE brand identity. Please contact us for questions regarding commercial use, partnership or brand usage.",
   "common.getintouch": "Get in Touch",
   "common.learnmore": "Learn More",
-  "common.why.eliyte": "Why ELIYTE?"
+  "common.why.eliyte": "Why ELIYTE?",
+  "error.title": "Page Not Found",
+  "error.description": "The page you're looking for may have been moved, deleted, or never existed. Return to the homepage or search for what you need.",
+  "error.home": "Back to Home",
+  "error.contact": "Contact Us"
 }

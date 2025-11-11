@@ -204,5 +204,9 @@
   "brand.contact.description": "ELIYTE marka kimliğini kullanmak için özel izin gerekmektedir. Ticari kullanım, ortaklık veya marka kullanımı ile ilgili sorularınız için lütfen bizimle iletişime geçin.",
   "common.getintouch": "İletişime Geçin",
   "common.learnmore": "Detaylı Bilgi",
-  "common.why.eliyte": "Neden ELIYTE?"
+  "common.why.eliyte": "Neden ELIYTE?",
+  "error.title": "Sayfa Bulunamadı",
+  "error.description": "Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir. Ana sayfaya dönün veya arama yapın.",
+  "error.home": "Ana Sayfaya Dön",
+  "error.contact": "İletişime Geçin"
 }
