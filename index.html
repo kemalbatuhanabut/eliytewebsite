@@ -39,6 +39,86 @@
 
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ELIYTE",
+      "legalName": "ELIYTE Technology Solutions",
+      "url": "https://eliyte.com",
+      "logo": "https://eliyte.com/images/logo-1200x300-dark.svg",
+      "foundingDate": "2020",
+      "description": "Yapay zeka, otomasyon ve yazılım geliştirme alanlarında kurumsal çözümler sunan teknoloji şirketi",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "İstanbul",
+        "addressCountry": "TR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+90-555-000-0000",
+        "contactType": "customer service",
+        "email": "iletisim@eliyte.com",
+        "availableLanguage": ["Turkish", "English"]
+      },
+      "sameAs": [
+        "https://eliyte.com"
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "Turkey"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Technology Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Yapay Zeka Geliştirme",
+              "description": "Machine Learning, NLP, Computer Vision ve AI otomasyon çözümleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Donanım Geliştirme",
+              "description": "AR-GE, ürün tasarımı ve endüstriyel modelleme hizmetleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web ve Yazılım Geliştirme",
+              "description": "Kurumsal web sitesi, API geliştirme ve bulut çözümleri"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobil Çözümler",
+              "description": "iOS, Android ve hibrit mobil uygulama geliştirme"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Google Analytics 4 (Replace GA_MEASUREMENT_ID with your actual ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->

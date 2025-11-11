@@ -189,12 +189,37 @@ img {
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     font-weight: var(--font-semibold);
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
     position: relative;
     overflow: hidden;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.button:hover::before {
+    opacity: 1;
+}
+
+.button:focus {
+    outline: 3px solid rgba(168, 85, 247, 0.5);
+    outline-offset: 2px;
+}
+
+.button:active {
+    transform: translateY(1px);
 }
 
 .button::before {

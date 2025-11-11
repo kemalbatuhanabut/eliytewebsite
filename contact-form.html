@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim Formu - ELIYTE</title>
+    <meta name="description" content="ELIYTE ile iletişime geçin. Projeleriniz için ücretsiz danışmanlık alın.">
+    <link rel="canonical" href="https://eliyte.com/contact-form.html">
+    <link rel="icon" type="image/svg+xml" href="images/logo-1x1-dark.svg">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eliyte.com/contact-form.html">
+    <meta property="og:title" content="İletişim Formu - ELIYTE">
+    <meta property="og:description" content="Projeleriniz için bizimle iletişime geçin. Ücretsiz danışmanlık hizmeti.">
+    <meta property="og:image" content="https://eliyte.com/images/logo-1200x300-dark.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .contact-form-section {
+            min-height: 100vh;
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(248, 250, 252, 0.7) 100%);
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(37, 0, 58, 0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-header h1 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: var(--font-semibold);
+            color: var(--text-color);
+        }
+        
+        .form-group label .required {
+            color: #ef4444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid rgba(168, 85, 247, 0.2);
+            border-radius: 0.5rem;
+            font-family: var(--body-font);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+            background: white;
+        }
+        
+        .form-control.error {
+            border-color: #ef4444;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: var(--font-semibold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(101, 31, 255, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 0.5rem;
+            color: #166534;
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="images/logo-1200x300-dark.svg" alt="ELIYTE - Yapay Zeka ve Teknoloji Çözümleri">
+            </a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link" data-i18n="nav.home">Ana Sayfa</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link" data-i18n="nav.services">Hizmetler</a></li>
+                    <li class="nav__item"><a href="index.html#projects" class="nav__link" data-i18n="nav.projects">Projeler</a></li>
+                    <li class="nav__item"><a href="index.html#contact" class="nav__link" data-i18n="nav.contact">İletişim</a></li>
+                </ul>
+            </div>
+            <button class="lang__toggle" id="lang-toggle" aria-label="Switch language">
+                <i class="fas fa-globe"></i> <span class="lang__code">EN</span> <span class="lang__label">/ TR</span>
+            </button>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <aside class="mobile-drawer glass" id="mobile-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-logo">
+                <a href="index.html"><img src="images/logo-1200x300-dark.svg" alt="ELIYTE"></a>
+            </div>
+            <button id="drawer-close" aria-label="Close menu" class="nav__close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-tagline">innovating for better</div>
+        <nav class="drawer-links">
+            <a href="index.html" class="nav__link" data-i18n="nav.home">Ana Sayfa</a>
+            <a href="index.html#services" class="nav__link" data-i18n="nav.services">Hizmetler</a>
+            <a href="index.html#projects" class="nav__link" data-i18n="nav.projects">Projeler</a>
+            <a href="index.html#contact" class="nav__link" data-i18n="nav.contact">İletişim</a>
+        </nav>
+        <div class="drawer-footer">
+            <div><i class="fas fa-envelope"></i> <a href="mailto:iletisim@eliyte.com">iletisim@eliyte.com</a></div>
+            <div><i class="fas fa-phone"></i> +90 555 000 0000</div>
+            <div><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</div>
+        </div>
+    </aside>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h1>İletişim Formu</h1>
+                    <p>Projeleriniz için bizimle iletişime geçin. En kısa sürede size dönüş yapacağız.</p>
+                </div>
+
+                <div id="success-message" class="success-message">
+                    <i class="fas fa-check-circle"></i> Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+                </div>
+
+                <form id="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Ad Soyad <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required 
+                                   aria-required="true" aria-describedby="name-error">
+                            <span id="name-error" class="error-message">Lütfen adınızı ve soyadınızı girin</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-posta <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required
+                                   aria-required="true" aria-describedby="email-error">
+                            <span id="email-error" class="error-message">Lütfen geçerli bir e-posta adresi girin</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                                   aria-describedby="phone-error">
+                            <span id="phone-error" class="error-message">Lütfen geçerli bir telefon numarası girin</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Şirket</label>
+                            <input type="text" id="company" name="company" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Konu <span class="required">*</span></label>
+                        <input type="text" id="subject" name="subject" class="form-control" required
+                               aria-required="true" aria-describedby="subject-error">
+                        <span id="subject-error" class="error-message">Lütfen konu başlığı girin</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mesajınız <span class="required">*</span></label>
+                        <textarea id="message" name="message" class="form-control" required
+                                  aria-required="true" aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message">Lütfen mesajınızı yazın</span>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span id="btn-text">Gönder</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p style="text-align: center; margin: 0;">© 2024 ELIYTE. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/language.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Professional contact form validation and submission
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.form-control').forEach(el => el.classList.remove('error'));
+            
+            // Validate form
+            let isValid = true;
+            const formData = new FormData(this);
+            
+            // Name validation
+            const name = formData.get('name').trim();
+            if (!name || name.length < 2) {
+                showError('name', 'Lütfen adınızı ve soyadınızı girin');
+                isValid = false;
+            }
+            
+            // Email validation
+            const email = formData.get('email').trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                showError('email', 'Lütfen geçerli bir e-posta adresi girin');
+                isValid = false;
+            }
+            
+            // Subject validation
+            const subject = formData.get('subject').trim();
+            if (!subject || subject.length < 3) {
+                showError('subject', 'Lütfen konu başlığı girin');
+                isValid = false;
+            }
+            
+            // Message validation
+            const message = formData.get('message').trim();
+            if (!message || message.length < 10) {
+                showError('message', 'Lütfen en az 10 karakter mesaj yazın');
+                isValid = false;
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<span class="loading-spinner"></span> Gönderiliyor...';
+            
+            // Simulate form submission (replace with actual API endpoint)
+            try {
+                // Example: await fetch('/api/contact', { method: 'POST', body: formData });
+                
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Show success message
+                document.getElementById('success-message').classList.add('show');
+                this.reset();
+                
+                // Scroll to success message
+                document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+            } catch (error) {
+                alert('Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan iletisim@eliyte.com adresine e-posta gönderin.');
+            } finally {
+                // Reset button
+                submitBtn.disabled = false;
+                btnText.innerHTML = 'Gönder';
+            }
+        });
+        
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(fieldId + '-error');
+            field.classList.add('error');
+            error.textContent = message;
+            error.classList.add('show');
+        }
+    </script>
+</body>
+</html>
